@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
 const { URL, URLSearchParams } = require('url');
 const { quantileSorted } = require('d3');
 
@@ -16,7 +16,7 @@ const calcMortgage = (price, int, down = 0.2, years = 30) => {
 };
 
 middlewares.getPropertiesForSale = async (req, res, next) => {
-  console.log(req.query);
+  console.log("req.query ", req.query);
   const url = new URL(
     'https://zillow-com1.p.rapidapi.com/propertyExtendedSearch'
   );
