@@ -43,6 +43,7 @@ app.use(cookieParser());
 // server test route
 app.use('/testRoute', (req, res) => {
   //test stuff here
+  res.send("helo world");
 });
 
 //signup route
@@ -82,6 +83,7 @@ app.use((err, req, res, next) => {
     status: 400,
     message: { err: 'An unknown error occurred.' },
   };
+  console.log("Error ", err)
   Object.assign(defaultErr, err);
   console.log(defaultErr.log);
   return res.status(defaultErr.status).json(defaultErr.message);
@@ -89,5 +91,5 @@ app.use((err, req, res, next) => {
 
 //listen on 3000
 app.listen(3000, () => {
-  console.log('Server listening on 3000');
+  console.log('Server listening on PORT 3000');
 });
