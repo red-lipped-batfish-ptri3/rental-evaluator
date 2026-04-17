@@ -1,9 +1,9 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import Card from '@material-ui/core/Card';
-import SearchBar from './SearchBar';
-import MapView from '../MapView';
+// import Card from '@material-ui/core/Card';
+// import SearchBar from './SearchBar';
+import MapView from '../MapView.js';
 
 const MainContainer = () => {
   return (

@@ -6,7 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { Typography, Grid, Card, Divider, Box } from '@material-ui/core';
-import api from '../axios/axios';
+import api from '../axios/axios.js';
 
 const MapModal = ({ open, handleClose, prop }) => {
   console.log(prop)

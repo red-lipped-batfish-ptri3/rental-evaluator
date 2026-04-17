@@ -1,11 +1,11 @@
 import React, { useMemo, useState } from 'react';
 import { Marker, Popup } from 'react-map-gl';
-import Pin from './Pin';
+import Pin from './Pin.js';
 // import PinSingleLocation from './PinSingleLocation';
-import MapModal from './components/MapModal';
-import api from './axios/axios';
-import Spinner from './Components/Spinner';
-import boiseList from './PropertyTestData/boiseList';
+import MapModal from './components/MapModal.js';
+import api from './axios/axios.js';
+import Spinner from './Components/Spinner.js';
+import boiseList from './PropertyTestData/boiseList.js';
 const MarkersList = (props) => {
   console.log('props', props);
   let features = [];
