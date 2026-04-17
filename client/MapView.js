@@ -12,9 +12,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import MarkersList from './MarkersList.js';
 import SearchBar from './Components/SearchBar.js';
 
-// console.log("config ", config)
-
-console.log("process.env ", process.env)
 
 if (!process.env.MAPBOX_API_KEY) {
   throw new Error(`Unable to read process.env.mapboxApiKey env variable`)
