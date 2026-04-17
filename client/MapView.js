@@ -9,11 +9,18 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import MarkersList from './MarkersList';
-import SearchBar from './Components/SearchBar';
+import MarkersList from './MarkersList.js';
+import SearchBar from './Components/SearchBar.js';
 
-const mapboxApiKey =
-  'pk.eyJ1IjoiYXJhbWF5IiwiYSI6ImNrcWI2Z3JjOTAxazQydnBlbHIyNWprbXAifQ.HNWa9dA4WXSefOVnqhIVZA';
+// console.log("config ", config)
+
+console.log("process.env ", process.env)
+
+if (!process.env.MAPBOX_API_KEY) {
+  throw new Error(`Unable to read process.env.mapboxApiKey env variable`)
+}
+
+const mapboxApiKey = process.env.MAPBOX_API_KEY
 
 const useStyles = makeStyles((theme) => ({
   root: {
