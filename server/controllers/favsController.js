@@ -1,7 +1,7 @@
 const User = require('../models/userModel');
 const favsController = {};
 
-favsController.addFavs = (req, res, next) => {
+favsController.addFavs = (req, _, next) => {
   //verify favorite and email are on the request
   // if (!req.body.favorite || !req.cookies.ssid) {
   //   console.log('no favorites found');
@@ -33,6 +33,7 @@ favsController.addFavs = (req, res, next) => {
 
 favsController.getFavs = (req, res, next) => {
   //verify email is on the request
+  // console.log('in get favs');
   if (!req.cookies.ssid) {
     return res
       .status(500)
@@ -41,6 +42,7 @@ favsController.getFavs = (req, res, next) => {
     //let favsArr;
     User.findById(req.cookies.ssid)
       .then((user) => {
+        console.log(user);
         res.locals.favsArr = user.favorites;
       })
       .then(() => next())

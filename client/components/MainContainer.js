@@ -1,9 +1,9 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import Card from '@material-ui/core/Card';
-import SearchBar from './SearchBar';
-import MapView from '../MapView';
+// import Card from '@material-ui/core/Card';
+// import SearchBar from './SearchBar';
+import MapView from '../MapView.js';
 
 const MainContainer = () => {
   return (
@@ -15,7 +15,7 @@ const MainContainer = () => {
       </Container>
 
       {/* <label htmlFor='location'>Search:</label> */}
-      <input id="location" type="text" className="form-control" />
+      {/* <input id="location" type="text" className="form-control" />
       <button
         onClick={async () => {
           const params = {
@@ -32,8 +32,8 @@ const MainContainer = () => {
         }}
       >
         Click me
-      </button>
-      <br></br>
+      </button> */}
+      {/* <br></br>
       <input id="location1" type="text" className="form-control" />
       <button
         onClick={async () => {
@@ -52,7 +52,7 @@ const MainContainer = () => {
       >
         Search target
       </button>
-      <pre id="listings"></pre>
+      <pre id="listings"></pre> */}
     </Container>
   );
 };

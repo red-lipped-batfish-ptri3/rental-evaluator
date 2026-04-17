@@ -4,15 +4,13 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
-require('dotenv').config();
 const cors = require('cors');
-const fetch = require('node-fetch');
 const { URL, URLSearchParams } = require('url');
 const { getRoutes } = require('get-routes');
 //direct controller imports
 const sessionController = require('./controllers/sessionController');
 const cookieController = require('./controllers/cookieController');
-
+const config = require("../config.js")
 //route imports
 const signupRouter = require('./routes/signupRoute');
 const signinRouter = require('./routes/signinRoute');
@@ -20,16 +18,23 @@ const properties = require('./routes/properties');
 const addFavsRouter = require('./routes/addFavsRoute');
 const getFavsRouter = require('./routes/getFavsRoute');
 
-//db connection
-//note - db connection issues?  check for console logs in terminal
-mongoose
-  .connect(
-    'mongodb+srv://admin:adam123@cluster0.tqcgi.mongodb.net/scratch_project?retryWrites=true&w=majority'
-  )
-  .then(
-    console.log('Connected to DB: ENV Test String: ', process.env.TEST_STRING)
-  )
-  .catch((err) => console.log('Mongo DB Connection Error:', err));
+const uri = config.default.uri
+
+const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true, useNewUrlParser: true } };
+
+async function run() {
+  try {
+    // Create a Mongoose client with a MongoClientOptions object to set the Stable API version
+    await mongoose.connect(uri, clientOptions);
+    await mongoose.connection.db.admin().command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await mongoose.disconnect();
+  }
+}
+run().catch(console.dir);
+
 
 app.use(cors());
 app.use(express.json());
@@ -38,6 +43,7 @@ app.use(cookieParser());
 // server test route
 app.use('/testRoute', (req, res) => {
   //test stuff here
+  res.send("helo world");
 });
 
 //signup route
@@ -77,6 +83,7 @@ app.use((err, req, res, next) => {
     status: 400,
     message: { err: 'An unknown error occurred.' },
   };
+  console.log("Error ", err)
   Object.assign(defaultErr, err);
   console.log(defaultErr.log);
   return res.status(defaultErr.status).json(defaultErr.message);
@@ -84,5 +91,5 @@ app.use((err, req, res, next) => {
 
 //listen on 3000
 app.listen(3000, () => {
-  console.log('Server listening on 3000');
+  console.log('Server listening on PORT 3000');
 });

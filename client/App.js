@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import SignIn from './components/Signin';
-import MainContainer from './components/MainContainer';
-import Register from './components/Register';
-import Favorites from './components/Favorites';
-import NavBar from './components/NavBar';
-import Test from './components/Test';
+import SignIn from './components/Signin.js';
+import MainContainer from './components/MainContainer.js';
+import Register from './components/Register.js';
+import Favorites from './components/Favorites.js';
+import NavBar from './components/NavBar.js';
+import Test from './components/Test.js';
 
-import { Switch, Route, Redirect } from 'react-router-dom';
-import MapView from './MapView';
+import { Switch, Route } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 
 const App = () => {
@@ -34,16 +33,14 @@ const App = () => {
 
         <main>
           <Switch>
-
-            <Route exact path="/signin" component={SignIn} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/favs" component={Favorites} />
+            {/* <Route exact path="/signin" component={SignIn} /> */}
+            {/* <Route exact path="/register" component={Register} /> */}
+            {/* <Route exact path="/favs" component={Favorites} /> */}
             <Route exact path="/">
               <NavBar
-                handleThemeChange={handleThemeChange}
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
-                setDarkState={setDarkState} 
+                setDarkState={setDarkState}
                 darkState={darkState}
                 handleThemeChange={handleThemeChange}
               />
@@ -60,14 +57,13 @@ const App = () => {
               <Register isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
             </Route>
             <Route exact path="/favs">
-              <NavBar 
-                  isLoggedIn={isLoggedIn}
-                  setIsLoggedIn={setIsLoggedIn}
-                  setDarkState={setDarkState} 
-                  darkState={darkState} 
-
-                  handleThemeChange={handleThemeChange}
-                />
+              <NavBar
+                isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
+                setDarkState={setDarkState}
+                darkState={darkState}
+                handleThemeChange={handleThemeChange}
+              />
               <Favorites
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
