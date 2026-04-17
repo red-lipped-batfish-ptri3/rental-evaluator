@@ -1,7 +1,7 @@
 const User = require('../models/userModel');
 const favsController = {};
 
-favsController.addFavs = (req, res, next) => {
+favsController.addFavs = (req, _, next) => {
   //verify favorite and email are on the request
   // if (!req.body.favorite || !req.cookies.ssid) {
   //   console.log('no favorites found');
